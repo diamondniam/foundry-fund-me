@@ -23,10 +23,7 @@ contract FundMe {
   }
 
   function fund() public payable {
-    require(
-      msg.value.getConversionRate(s_priceFeed) >= MINIMUM_USD,
-      "You need to spend more ETH!"
-    );
+    require(msg.value.getConversionRate(s_priceFeed) >= MINIMUM_USD, "You need to spend more ETH!");
     console.log(msg.value.getConversionRate(s_priceFeed));
     s_addressToAmountFunded[msg.sender] += msg.value;
     s_funders.push(msg.sender);
@@ -51,7 +48,7 @@ contract FundMe {
 
     s_funders = new address[](0);
 
-    (bool callSuccess, ) = i_owner.call{value: address(this).balance}("");
+    (bool callSuccess,) = i_owner.call{value: address(this).balance}("");
     require(callSuccess, "Call failed");
   }
 
@@ -65,11 +62,9 @@ contract FundMe {
 
   /**
    * View / pure functions (Getters)
-   **/
-
-  function getAddressToAmountFunded(
-    address fundingAddress
-  ) external view returns (uint256) {
+   *
+   */
+  function getAddressToAmountFunded(address fundingAddress) external view returns (uint256) {
     return s_addressToAmountFunded[fundingAddress];
   }
 

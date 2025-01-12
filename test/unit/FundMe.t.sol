@@ -37,10 +37,7 @@ contract FundMeTest is Test {
     uint256 endingContractBalance = address(fundMe).balance;
 
     assertEq(endingContractBalance, 0);
-    assertEq(
-      endingOwnerBalance,
-      startingContractBalance + startingOwnerBalance
-    );
+    assertEq(endingOwnerBalance, startingContractBalance + startingOwnerBalance);
   }
 
   function testMinUSD() public view {
@@ -82,11 +79,7 @@ contract FundMeTest is Test {
     uint160 startingFunderIndex = 1;
     uint160 quantityOfFunders = 10;
 
-    for (
-      uint160 i = startingFunderIndex;
-      startingFunderIndex < quantityOfFunders;
-      startingFunderIndex++
-    ) {
+    for (uint160 i = startingFunderIndex; startingFunderIndex < quantityOfFunders; startingFunderIndex++) {
       hoax(address(i), AMOUNT_TO_SEND);
       fundMe.fund{value: AMOUNT_TO_SEND}();
     }
