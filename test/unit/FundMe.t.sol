@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.18;
 
-import { Test, console } from "forge-std/Test.sol";
-import { FundMe } from "../../src/FundMe.sol";
-import { DeployFundMe } from "../../script/DeployFundMe.s.sol";
+import {Test, console} from "forge-std/Test.sol";
+import {FundMe} from "../../src/FundMe.sol";
+import {DeployFundMe} from "../../script/DeployFundMe.s.sol";
 
 contract FundMeTest is Test {
   FundMe fundMe;
@@ -20,7 +20,7 @@ contract FundMeTest is Test {
 
   modifier funded() {
     vm.prank(DIAMOND);
-    fundMe.fund{ value: AMOUNT_TO_SEND }();
+    fundMe.fund{value: AMOUNT_TO_SEND}();
     _;
   }
 
@@ -88,7 +88,7 @@ contract FundMeTest is Test {
       startingFunderIndex++
     ) {
       hoax(address(i), AMOUNT_TO_SEND);
-      fundMe.fund{ value: AMOUNT_TO_SEND }();
+      fundMe.fund{value: AMOUNT_TO_SEND}();
     }
   }
 }

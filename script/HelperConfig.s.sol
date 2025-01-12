@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.18;
 
-import { Script, console } from "forge-std/Script.sol";
-import { MockV3Aggregator } from "../test/mocks/MockV3Aggregator.sol";
+import {Script, console} from "forge-std/Script.sol";
+import {MockV3Aggregator} from "../test/mocks/MockV3Aggregator.sol";
 
 contract HelperConfig is Script {
   NetworkConfig public activeNetworkConfig;

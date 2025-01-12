@@ -1,10 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
 
-// Note: The AggregatorV3Interface might be at a different location than what was in the video!
-import { AggregatorV3Interface } from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
-import { PriceConverter } from "../src/PriceConverter.sol";
-import { console } from "../lib/forge-std/src/console.sol";
+import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
+import {PriceConverter} from "../src/PriceConverter.sol";
+import {console} from "../lib/forge-std/src/console.sol";
 
 error NotOwner();
 
@@ -52,7 +51,7 @@ contract FundMe {
 
     s_funders = new address[](0);
 
-    (bool callSuccess, ) = i_owner.call{ value: address(this).balance }("");
+    (bool callSuccess, ) = i_owner.call{value: address(this).balance}("");
     require(callSuccess, "Call failed");
   }
 

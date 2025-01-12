@@ -2,10 +2,10 @@
 
 pragma solidity ^0.8.18;
 
-import { Test, console } from "forge-std/Test.sol";
-import { FundMe } from "../../src/FundMe.sol";
-import { DeployFundMe } from "../../script/DeployFundMe.s.sol";
-import { FundFundMe, WithdrawFundMe } from "../../script/Interactions.s.sol";
+import {Test, console} from "forge-std/Test.sol";
+import {FundMe} from "../../src/FundMe.sol";
+import {DeployFundMe} from "../../script/DeployFundMe.s.sol";
+import {FundFundMe, WithdrawFundMe} from "../../script/Interactions.s.sol";
 
 contract InteractionsTest is Test {
   FundMe fundMe;
@@ -22,7 +22,7 @@ contract InteractionsTest is Test {
 
   function testUserCanFundAndOwnerCanWithdraw() public {
     vm.prank(DIAMOND);
-    fundMe.fund{ value: AMOUNT_TO_SEND }();
+    fundMe.fund{value: AMOUNT_TO_SEND}();
 
     WithdrawFundMe withdrawFundMe = new WithdrawFundMe();
     withdrawFundMe.withdrawFundMe(address(fundMe));
